@@ -92,6 +92,24 @@ Once this command completes, the following services will be available:
 - `sudo make logs`: Tails the container logs to monitor output.
 - `sudo make retrain`: Manually triggers the retraining pipeline.
 
+## 📦 Adding New Data Files
+
+To add new data for drift testing or model training:
+
+1. Place your new data file inside the `data/` folder, using the same structure and format as the existing file (`customer_churn_mini.json`).
+2. Each new data file must contain all columns/keys present in the original file.
+3. The system will automatically determine the most recent file based on its creation date.
+4. Data drift comparison is performed automatically between the newest and oldest files in the folder.
+
+**Note:** No code or configuration changes are required. Just add your new file to the correct folder.
+
+
+
+### 🔄 Automatic Data Update
+
+To enable automatic data updates, implement a function that pulls the latest events from your database and saves them in the `data` folder using the same format. This function will be triggered automatically before each model training run, ensuring your training data is always up-to-date.
+
+
 ## 💡 API Usage for Predictions
 
 The API is designed to be practical and flexible. It accepts a list of raw user event logs (`events`) instead of pre-computed features. The server handles the feature engineering and prediction internally.
