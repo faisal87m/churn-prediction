@@ -78,4 +78,3 @@ env/
 # MLflow
 mlruns/
 
-data/
