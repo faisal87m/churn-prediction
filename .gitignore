@@ -78,4 +78,4 @@ env/
 # MLflow
 mlruns/
 
-data/*.json
+data/
