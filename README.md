@@ -110,6 +110,20 @@ To add new data for drift testing or model training:
 To enable automatic data updates, implement a function that pulls the latest events from your database and saves them in the `data` folder using the same format. This function will be triggered automatically before each model training run, ensuring your training data is always up-to-date.
 
 
+## 📊 MLflow Production Configuration
+
+For production deployments, configure MLflow to use a remote tracking server and secure artifact storage. Update the `mlflow` section in your `config.py` as follows:
+
+```python
+"mlflow": {
+    "experiment_name": "Churn_Prediction_Unified_Pipeline",
+    "model_artifact_path": "churn_model",
+    "tracking_uri": "http://<your-mlflow-server>:5000",  # Production MLflow server
+},
+```
+
+
+
 ## 💡 API Usage for Predictions
 
 The API is designed to be practical and flexible. It accepts a list of raw user event logs (`events`) instead of pre-computed features. The server handles the feature engineering and prediction internally.
